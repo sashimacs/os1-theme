@@ -24,7 +24,6 @@
      `(font-lock-comment-face ((,class (:foreground ,base00))))
      `(font-lock-keyword-face ((,class (:foreground ,green :weight semibold))))
      `(font-lock-comment-delimiter-face ((,class (:foreground ,middle))))
-     `(font-lock-variable-name-face ((,class (:foreground ,magenta-1fg))))
 
      `(corfu-default ((,class (:background ,base02 :foreground ,base3))))
      `(corfu-current ((,class (:foreground ,cyan-2fg :background ,cyan-2bg))))
