@@ -37,7 +37,10 @@
      `(link ((,class :foreground ,blue :weight semibold)))
      `(link-visited ((,class :foreground ,blue-1fg :weight semibold)))
 
-     `(doom-modeline-bar ((,class :background ,red :inherit mode-line-highlight)))
-     `(doom-modeline-bar-inactive ((,class :background ,red-2bg :inherit t)))
+     `(doom-modeline-bar ((,class :background ,violet-d :inherit mode-line-highlight)))
+     `(doom-modeline-bar-inactive ((,class :background ,violet-2bg :inherit t)))
+
+     `(git-commit-summary ((,class (:foreground ,violet-d))))
+     `(magit-section-heading ((,class (:height 1.2 :foreground ,violet-d :weight semibold :inherit variable-pitch))))
      )))
 (provide 'os1-customized)
