@@ -11,11 +11,25 @@ This is a work-in-progress. Feel free to submit PRs, but please include before a
 
 ### Installation
 
+You can install using straight with,
 ```emacs-lisp
 (use-package os1-theme
   :straight (:type git :host github :repo "sashimacs/os1-theme")
   :defer nil
   :config (load-theme 'os1 t))
+```
+
+
+
+Or you can install using quelpa with,
+```emacs-lisp
+;; Install and load `quelpa-use-package'.
+(package-install 'quelpa-use-package)
+(require 'quelpa-use-package)
+
+;; Install Ement.
+(use-package os1-theme
+  :quelpa (os1-theme :fetcher github :repo "sashimacs/os1-theme"))
 ```
 
 ### Previews
