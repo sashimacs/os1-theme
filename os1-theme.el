@@ -18,7 +18,7 @@
 
 ;; Options
 
-(defgroup os1 nil
+(defgroup os1-options nil
   "OS1 theme options.
 These should be set before loading. Also see `solarized' options."
   :group 'faces
@@ -27,7 +27,7 @@ These should be set before loading. Also see `solarized' options."
 (defcustom os1-modeline-padding 1
   "Amount of padding in pixels around the modeline in GUI sessions."
   :type 'number
-  :group os1)
+  :group os1-options)
 
 ;; Theme creation
 
