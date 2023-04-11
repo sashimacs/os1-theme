@@ -13,13 +13,13 @@
        ((,class (
                  :underline nil :overline nil
                  :background ,base02 :foreground ,base1
-                 :box (:line-width 8 :color ,base02)))))
+                 :box (:line-width 1 :color ,base02)))))
      `(mode-line-inactive
        ((,class (
                  :underline nil :overline nil
                  :background ,hl-light
                  :foreground ,base01
-                 :box (:line-width 8 :color ,hl-light)))))
+                 :box (:line-width 1 :color ,hl-light)))))
 
      `(font-lock-comment-face ((,class (:foreground ,base00))))
      `(font-lock-keyword-face ((,class (:foreground ,green :weight semibold))))
