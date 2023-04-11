@@ -19,18 +19,28 @@ You can install using straight with,
   :config (load-theme 'os1 t))
 ```
 
-
-
 Or you can install using quelpa with,
 ```emacs-lisp
 ;; Install and load `quelpa-use-package'.
 (package-install 'quelpa-use-package)
 (require 'quelpa-use-package)
 
-;; Install Ement.
+;; Install OS1.
 (use-package os1-theme
   :quelpa (os1-theme :fetcher github :repo "sashimacs/os1-theme"))
 ```
+
+### Customization
+
+OS<sup>1</sup> currently inherits from the great [Solarized for Emacs](https://github.com/bbatsov/solarized-emacs) theme, so those options apply here too. In addition, the following has been added:
+
+```emacs-lisp
+;; The amount of padding, in pixels, to add around the modeline.
+;; In the previews here, this is set to `8’, but its default is `1’.
+(setq os1-modeline-padding 1)
+```
+
+These options must be set before loading. You can also use for example `:custom (os1-modeline-padding 8)` in your use-package declarations to customize the theme before loading.
 
 ### Previews
 
