@@ -41,6 +41,6 @@
      `(doom-modeline-bar-inactive ((,class :background ,violet-2bg :inherit t)))
 
      `(git-commit-summary ((,class (:foreground ,violet-d))))
-     `(magit-section-heading ((,class (:height 1.2 :foreground ,violet-d :weight semibold :inherit variable-pitch))))
+     `(magit-section-heading ((,class (:height 1.2 :foreground ,violet-d :weight semibold :inherit ,s-variable-pitch))))
      )))
 (provide 'os1-customized)
