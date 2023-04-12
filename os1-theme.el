@@ -16,6 +16,21 @@
 
 (deftheme os1 "A light, warm, modern theme powered by solarized.")
 
+;; Options
+
+(defgroup os1 nil
+  "OS1 theme options.
+These should be set before loading. Also see `solarized' options."
+  :group 'faces
+  :link '(url-link :tag "GitHub" "https://github.com/sashimacs/os1-theme"))
+
+(defcustom os1-modeline-padding 1
+  "Amount of padding in pixels around the modeline in GUI sessions."
+  :type 'number
+  :group 'os1)
+
+;; Theme creation
+
 (solarized-with-color-variables 'light 'os1 os1-theme-palette-alist os1-faces)
 
 (provide-theme 'os1)
