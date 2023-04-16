@@ -71,21 +71,6 @@
   :type 'number
   :group 'os1)
 
-(defcustom os1-scale-org-headlines t
-  "Whether `org-mode' headlines should be scaled."
-  :type 'boolean
-  :group 'os1)
-
-(defcustom os1-scale-markdown-headlines nil
-  "Whether `markdown-mode' headlines should be scaled."
-  :type 'boolean
-  :group 'os1)
-
-(defcustom os1-scale-outline-headlines t
-  "Whether `outline-mode' headlines should be scaled."
-  :type 'boolean
-  :group 'os1)
-
 (autothemer-deftheme
  os1 "A light, warm, modern theme focused on legibility and coziness."
 
@@ -266,6 +251,8 @@
   (compilation-mode-line-fail
    (:inherit 'compilation-error :foreground red :weight 'bold))
   (compilation-mode-line-run (:foreground orange :weight 'bold))
+;;;;; child-frame
+  (child-frame-border (:background red-2bg))
 ;;;;; completions
   (completions-annotations (:foreground base01))
   (completions-common-part (:foreground violet-d :weight 'semibold))
@@ -301,6 +288,7 @@
   (dired-perm-write (:foreground base0 :underline t))
   (dired-symlink (:foreground cyan :weight 'normal :slant 'italic))
   (dired-warning (:foreground orange :underline t))
+  (dired-broken-symlink (:foreground red :underline t :slant 'italic))
 ;;;;; dired-async
   (dired-async-message (:background yellow-l))
   (dired-async-mode-message (:background red-l))
