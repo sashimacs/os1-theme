@@ -12,47 +12,7 @@
 ;;; Code:
 
 (require 'autothemer)
-
-;;; Utilities
-
-(defun os1-color-clamp-lab (lab)
-  "Restricts a LAB colorspace color if it is out of bounds."
-  (list (min (max (nth 0 lab) 0.0) 100.0)
-        (min (max (nth 1 lab) -128) 127)
-        (min (max (nth 2 lab) -128) 127)))
-
-(defun os1-color-rgb-to-hex (red green blue &optional digits-per-component round)
-  "Return hexadecimal #RGB notation for the color specified by RED GREEN BLUE.
-RED, GREEN, and BLUE should be numbers between 0.0 and 1.0, inclusive.
-Optional argument DIGITS-PER-COMPONENT can be either 4 (the default)
-or 2; use the latter if you need a 24-bit specification of a color.
-Optional argument ROUND rounds values which probably is what you usually want."
-  (or digits-per-component (setq digits-per-component 4))
-  (let* ((maxval (if (= digits-per-component 2) 255 65535))
-         (fmt (if (= digits-per-component 2) "#%02x%02x%02x" "#%04x%04x%04x")))
-    (if round
-        (format fmt (+ 0.5 (* red maxval)) (+ 0.5 (* green maxval)) (+ 0.5(* blue maxval)))
-        (format fmt (* red maxval) (* green maxval) (* blue maxval)))))
-
-;;;###autoload
-(defun os1-color-blend (color1 color2 alpha &optional digits-per-component)
-  "Blends COLOR1 onto COLOR2 with ALPHA.
-
-COLOR1 and COLOR2 should be color names (e.g. \"white\") or RGB
-triplet strings (e.g. \"#ff12ec\").
-
-Alpha should be a float between 0 and 1.
-
-Optional argument DIGITS-PER-COMPONENT can be either 4 (the default) or 2;
-use the latter if you need a 24-bit specification of a color."
-  (let ((args (mapcar 'color-clamp
-                      (apply 'color-lab-to-srgb
-                             (os1-color-clamp-lab
-                              (cl-mapcar
-                               (lambda (v1 v2) (+ v1 (* alpha (- v2 v1))))
-                               (apply 'color-srgb-to-lab (color-name-to-rgb color2))
-                               (apply 'color-srgb-to-lab (color-name-to-rgb color1))))))))
-    (apply 'os1-color-rgb-to-hex `(,@args ,digits-per-component t))))
+(require 'os1-utils)
 
 ;; Options
 
@@ -413,7 +373,7 @@ use the latter if you need a 24-bit specification of a color."
   ;; ace-jump
   (ace-jump-face-background (:foreground base01 :background base03
                                          :inverse-video nil))
-  (ace-jump-face-foreground (:foreground red :background base03 :inverse-video nil :weight ''bold))
+  (ace-jump-face-foreground (:foreground red :background base03 :inverse-video nil :weight 'bold))
 
   ;; all-the-icons
   (spaceline-all-the-icons-info-face (:foreground blue))
@@ -1018,7 +978,7 @@ use the latter if you need a 24-bit specification of a color."
 ;;;;; magit
 ;;;;;; headings and diffs
      (magit-section-highlight (:extend t :background base02))
-     (magit-section-heading (:foreground violet-d :weight 'bold :inherit maybe-variable-pitch))
+     (magit-section-heading (:foreground violet-d :weight 'bold :inherit maybe-variable-pitch :height os1-height-plus-3))
      (magit-section-heading-selection (:foreground orange :weight 'bold))
      (magit-diff-file-heading (:weight 'bold))
      (magit-diff-file-heading-highlight (:extend t :background base02))
@@ -1901,8 +1861,8 @@ use the latter if you need a 24-bit specification of a color."
   'os1
   `(flycheck-error
     ((((supports :underline (:style wave)))
-      (:underline (:style wave :color red) :inherit unspecified))
-     (t (:foreground ,red-d :background ,red-l :weight bold :underline t))))
+      (:underline (:style wave :color ,red) :inherit unspecified)))
+     (t (:foreground ,red-d :background ,red-l :weight bold :underline t)))
   `(flycheck-warning
     ((((supports :underline (:style wave)))
       (:underline (:style wave :color ,yellow) :inherit unspecified))
@@ -1911,7 +1871,6 @@ use the latter if you need a 24-bit specification of a color."
     ((((supports :underline (:style wave)))
       (:underline (:style wave :color ,blue) :inherit unspecified))
      (t (:foreground ,blue-d :background ,blue-l :weight bold :underline t))))
-
   `(flymake-errline
     ((((supports :underline (:style wave)))
       (:underline (:style wave :color ,red) :inherit unspecified))
@@ -1924,7 +1883,6 @@ use the latter if you need a 24-bit specification of a color."
     ((((supports :underline (:style wave)))
       (:underline (:style wave :color ,yellow) :inherit unspecified))
      (t (:foreground ,yellow-d :background ,yellow-l :weight bold :underline t))))
-
   `(flyspell-duplicate
     ((((supports :underline (:style wave)))
       (:underline (:style wave :color ,yellow) :inherit unspecified))
@@ -1933,7 +1891,6 @@ use the latter if you need a 24-bit specification of a color."
     ((((supports :underline (:style wave)))
       (:underline (:style wave :color ,red) :inherit unspecified))
      (t (:foreground ,red :weight bold :underline t))))
-
   `(langtool-errline
     ((((supports :underline (:style wave)))
       (:underline (:style wave :color ,green) :inherit unspecified))
@@ -1949,7 +1906,8 @@ use the latter if you need a 24-bit specification of a color."
                              ,violet
                              ,yellow
                              ,orange
-                             ,cyan])))
+                             ,cyan]))
+ )
 
 ;;; Footer
 
