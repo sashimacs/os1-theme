@@ -334,7 +334,7 @@
   (ee-shadow (:inherit 'shadow))
 ;;;;; eldoc-box
   (eldoc-box-border (:background red-2bg))
-  (eldoc-box-body (:inherit maybe-variable-pitch))
+  (eldoc-box-body (:inherit maybe-variable-pitch :background base02))
 ;;;;; enh-ruby-mode
   (enh-ruby-string-delimiter-face (:foreground yellow))
   (enh-ruby-heredoc-delimiter-face (:inherit 'enh-ruby-string-delimiter-face))
