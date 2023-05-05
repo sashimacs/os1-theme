@@ -332,6 +332,9 @@
   (ee-marked (:foreground magenta :weight 'bold))
   (ee-omitted (:foreground base01))
   (ee-shadow (:inherit 'shadow))
+;;;;; eldoc-box
+  (eldoc-box-border (:background red-2bg))
+  (eldoc-box-body (:inherit maybe-variable-pitch))
 ;;;;; enh-ruby-mode
   (enh-ruby-string-delimiter-face (:foreground yellow))
   (enh-ruby-heredoc-delimiter-face (:inherit 'enh-ruby-string-delimiter-face))
@@ -1081,6 +1084,8 @@
      (magit-popup-argument            (:foreground cyan    :weight 'bold))
      (magit-popup-disabled-argument   (:foreground base01  :weight 'normal))
      (magit-popup-option-value        (:foreground cyan    :weight 'bold))
+;;;;; marginalia
+     (marginalia-date (:foreground blue-d :weight 'normal))
 ;;;;; markdown-mode
      (markdown-blockquote-face (:inherit 'font-lock-doc-face))
      (markdown-bold-face (:inherit 'bold))
@@ -1346,7 +1351,7 @@
      (org-column-title (:background base02 :underline t :weight 'bold))
      (org-date-selected (:foreground red :inverse-video t))
      (org-document-info (:foreground base0))
-     (org-document-title (:foreground base1  :weight 'bold :height os1-height-plus-4))
+     (org-document-title (:foreground base1  :weight 'bold :height os1-height-plus-4 :inherit maybe-variable-pitch))
      (org-drawer (:foreground cyan))
      (org-footnote (:foreground magenta :underline t))
      (org-latex-and-export-specials (:foreground orange))
